@@ -84,8 +84,16 @@ const add_event_listeners = function () {
     // Add an equals button.
     const equalRef = document.querySelector('#equals');
     equalRef.addEventListener('click', function () {
+        console.log(op);
+        console.log(result);
+        console.log(user_input);
+        result = operate(result, op, +user_input);
+        variables.push(result);
+        
+        user_input = ''; 
         display('clear');
         display(getLastNonEmptyElement(variables));
+
     });
 
     // Create buttons for all operations.
@@ -113,9 +121,9 @@ const add_event_listeners = function () {
                 display('clear');
                 display(result);
             }
-            // else {
-            //     result = variables.slice(-1);
-            // }
+            else {
+                result = variables.slice(-1);
+            }
             console.log(variables);
             console.log(`result = ${result}`)
         });
